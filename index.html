@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北海道旅遊景點指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Microsoft JhengHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+            padding: 20px 15px;
+            text-align: left;
+            font-size: 16px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        th:first-child { width: 5%; }
+        th:nth-child(2) { width: 20%; }
+        th:nth-child(3) { width: 15%; }
+        th:nth-child(4) { width: 50%; }
+        th:nth-child(5) { width: 10%; }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        tr:nth-child(even) {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+        }
+
+        tr:nth-child(odd) {
+            background: white;
+        }
+
+        tr:hover {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .attraction-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .location {
+            color: #7f8c8d;
+            font-size: 14px;
+            background: #ecf0f1;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .info-content {
+            color: #34495e;
+            line-height: 1.8;
+        }
+
+        .info-content strong {
+            color: #2980b9;
+        }
+
+        .video-link {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .index-number {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            color: #2d3436;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            table {
+                font-size: 12px;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+            }
+            
+            .attraction-name {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗾 北海道旅遊景點指南</h1>
+            <p>探索北海道的絕美景點與獨特體驗</p>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>編號</th>
+                        <th>景點名稱</th>
+                        <th>位置</th>
+                        <th>詳細資訊</th>
+                        <th>影片連結</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div class="index-number">1</div></td>
+                        <td>
+                            <div class="attraction-name">定山溪自然之村</div>
+                            <div class="location">定山溪</div>
+                        </td>
+                        <td>定山溪</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>提供冬天露營體驗，可入住蒙古包或小木屋<br>
+                            <strong>設施：</strong>蒙古包可睡7人（3900日幣），小木屋可睡5人（4700日幣），皆包含暖爐<br>
+                            <strong>提供：</strong>營火、裝備租借服務（幾百日幣）<br>
+                            <strong>設有：</strong>完善的料理棟，非常乾淨且免費使用，有石窯<br>
+                            <strong>特色：</strong>非營利機構，旨在提供更多體驗大自然的機會<br>
+                            <strong>夏季：</strong>也非常受歡迎
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=-BzvkK6e9sQ" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">2</div></td>
+                        <td>
+                            <div class="attraction-name">札幌藥妝狸小路五丁目大王店</div>
+                            <div class="location">札幌市狸小路五丁目</div>
+                        </td>
+                        <td>札幌市</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>狸小路最大、品項最多的藥妝店<br>
+                            <strong>購物優惠：</strong>國際旅客可享退稅，掃描QR Code還可享5%折扣<br>
+                            <strong>樓層分佈：</strong>一樓賣藥品，二樓美妝，三樓食品與日用雜貨
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=-E-KlbTRKTw" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">3</div></td>
+                        <td>
+                            <div class="attraction-name">伊達溫泉</div>
+                            <div class="location">伊達市</div>
+                        </td>
+                        <td>伊達市</td>
+                        <td class="info-content">
+                            <strong>住宿：</strong>價格相對划算，房間非常大但無獨立衛浴，需使用公共溫泉設施<br>
+                            <strong>溫泉：</strong>提供日歸溫泉（成人490日幣），泉質帶點鹹味，有戶外溫泉，水溫約38度，適合小朋友久泡<br>
+                            <strong>推薦：</strong>適合家庭旅行，尤其是想體驗日式在地溫泉的旅客
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=08dP1pr7a2M" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">4</div></td>
+                        <td>
+                            <div class="attraction-name">有珠海水浴場</div>
+                            <div class="location">伊達市</div>
+                        </td>
+                        <td>伊達市</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>新開放的海水浴場，適合帶小朋友玩水，可進行BBQ<br>
+                            <strong>設施：</strong>設有救生員，在防波堤內，非常安全
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=08dP1pr7a2M" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">5</div></td>
+                        <td>
+                            <div class="attraction-name">洞爺湖環湖自行車</div>
+                            <div class="location">洞爺湖北岸</div>
+                        </td>
+                        <td>洞爺湖</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>適合騎自行車環湖，沿途風景優美<br>
+                            <strong>景觀：</strong>湖光山色迷人，湖中島嶼清晰可見<br>
+                            <strong>環境：</strong>北岸遊客較少，商業氣息不濃，非常清幽
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=1fvYRJR92nw" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">6</div></td>
+                        <td>
+                            <div class="attraction-name">Nikka Whisky 余市蒸餾所</div>
+                            <div class="location">余市</div>
+                        </td>
+                        <td>余市</td>
+                        <td class="info-content">
+                            <strong>參觀：</strong>需預約，可參觀蒸餾過程，看到燃燒石炭的景象和巨大的蒸餾桶<br>
+                            <strong>特色：</strong>威士忌儲藏室存放橡木桶，年份越久蒸發越多，酒越昂貴<br>
+                            <strong>品鑑：</strong>提供免費威士忌試飲（疫情期間限一杯），還有蘋果酒<br>
+                            <strong>禮品：</strong>販售蘋果酒（990日幣）受台灣遊客歡迎
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=1nLxwK36cJ0" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">7</div></td>
+                        <td>
+                            <div class="attraction-name">余市露營區</div>
+                            <div class="location">余市</div>
+                        </td>
+                        <td>余市</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>新開幕的露營區，適合露營新手，不需自備裝備<br>
+                            <strong>住宿：</strong>提供蒙古包（最低15,000日幣），附餐桌、椅子和烤肉台<br>
+                            <strong>體驗：</strong>可體驗升營火（柴火7公斤2000日幣）和烤肉
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=1nLxwK36cJ0" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">8</div></td>
+                        <td>
+                            <div class="attraction-name">新千歲國際機場</div>
+                            <div class="location">千歲</div>
+                        </td>
+                        <td>千歲</td>
+                        <td class="info-content">
+                            <strong>設施：</strong>設有哆啦A夢雕像，連結國際線與國內線的長廊；國內線有戶外展望台可觀看飛機起降<br>
+                            <strong>購物：</strong>紀念品大街販售各式甜點和伴手禮<br>
+                            <strong>特色：</strong>被評價為日本最好玩、美食最多的機場
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=2CWQvTVE3os" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">9</div></td>
+                        <td>
+                            <div class="attraction-name">定山溪獨木舟</div>
+                            <div class="location">定山溪溪谷內</div>
+                        </td>
+                        <td>定山溪</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>獨木舟體驗，穿梭於楓紅溪谷中，風景優美；水深淺不一，部分區域可站立<br>
+                            <strong>費用：</strong>北海道居民2000日幣，非居民5500日幣，時長60分鐘<br>
+                            <strong>設備：</strong>提供救生衣、防水袋、溯溪鞋<br>
+                            <strong>推薦：</strong>簡單安全，適合情侶或雙人體驗
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=2q-EO_ZFMzo" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">10</div></td>
+                        <td>
+                            <div class="attraction-name">安平町油菜花田</div>
+                            <div class="location">安平町</div>
+                        </td>
+                        <td>安平町</td>
+                        <td class="info-content">
+                            <strong>花期：</strong>約在五月底盛開<br>
+                            <strong>景觀：</strong>一大片金黃色的油菜花海，與藍天白雲形成壯麗景色；花香濃郁<br>
+                            <strong>交通：</strong>距離新千歲機場約30分鐘車程，建議自駕前往，交通較為不便
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=4wdn6zGW8fQ" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">11</div></td>
+                        <td>
+                            <div class="attraction-name">流冰物語號 (夏季無流冰)</div>
+                            <div class="location">知床斜里車站到網走站</div>
+                        </td>
+                        <td>知床斜里</td>
+                        <td class="info-content">
+                            <strong>運行時間：</strong>每年1月30日至2月28日<br>
+                            <strong>特色：</strong>可欣賞鄂霍次克海上的流冰（來自俄羅斯），沿途停靠濱小清水和北濱車站；全程約一小時<br>
+                            <strong>注意：</strong>夏季無法看到流冰
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=96TlNMevMF8" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">12</div></td>
+                        <td>
+                            <div class="attraction-name">岩見澤綠色樂園</div>
+                            <div class="location">岩見澤</div>
+                        </td>
+                        <td>岩見澤</td>
+                        <td class="info-content">
+                            <strong>遊樂設施：</strong>提供「坐到飽」的遊園設施票券<br>
+                            <strong>特色：</strong>設有高達85米的摩天輪<br>
+                            <strong>交通：</strong>距離札幌約40分鐘車程
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=9B5kjPPyJtA" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">13</div></td>
+                        <td>
+                            <div class="attraction-name">積丹半島島武意海岸</div>
+                            <div class="location">積丹半島</div>
+                        </td>
+                        <td>積丹半島</td>
+                        <td class="info-content">
+                            <strong>景觀：</strong>日本百選海岸之一，以其「積丹藍」的清澈海水聞名<br>
+                            <strong>路線：</strong>需穿過隧道到達<br>
+                            <strong>活動：</strong>可沿階梯走到海邊（約5-10分鐘），水溫冰涼；七月海膽季時可在水中尋找海膽（需漁民證才能帶走）
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=9k-lGmVNA-A" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">14</div></td>
+                        <td>
+                            <div class="attraction-name">喜多方溫泉飯店</div>
+                            <div class="location">喜多方</div>
+                        </td>
+                        <td>喜多方</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>專為親子設計的友善飯店<br>
+                            <strong>溫泉：</strong>設有大型戶外溫泉區，周圍環繞森林<br>
+                            <strong>設施：</strong>餐廳旁有兒童遊戲室<br>
+                            <strong>交通：</strong>距離札幌約兩小時車程
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=DWRChGUDUL0" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">15</div></td>
+                        <td>
+                            <div class="attraction-name">織物湖</div>
+                            <div class="location">千歲</div>
+                        </td>
+                        <td>千歲</td>
+                        <td class="info-content">
+                            <strong>景觀：</strong>湖景優美，有湖畔餐廳提供戶外用餐區
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=F2cCZ-4yzlM" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">16</div></td>
+                        <td>
+                            <div class="attraction-name">洞爺湖SUP體驗</div>
+                            <div class="location">洞爺湖北岸，福建堂旁</div>
+                        </td>
+                        <td>洞爺湖</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>立槳衝浪 (SUP) 體驗，適合初學者<br>
+                            <strong>費用：</strong>每人6600日幣，時長兩小時<br>
+                            <strong>設備：</strong>提供SUP板和救生衣；建議穿著水母衣或不易吸水的長衣褲<br>
+                            <strong>最佳季節：</strong>7月到9月中旬，天氣穩定，氣溫舒適
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=FygtGXI6UsE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">17</div></td>
+                        <td>
+                            <div class="attraction-name">東川町</div>
+                            <div class="location">東川町</div>
+                        </td>
+                        <td>東川町</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>被稱為「寫真之町」，風景優美<br>
+                            <strong>道之驛：</strong>販售當地農產品和特產，有會講中文的員工<br>
+                            <strong>圖書館：</strong>寬敞現代化，提供免費網路和空調，展出當地生產的高級家具<br>
+                            <strong>咖啡店/小店：</strong>許多獨特的小店，由外地移居者經營，充滿活力<br>
+                            <strong>移居計畫：</strong>北海道許多鄉鎮提供試住計畫，鼓勵人們移居
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=H2JNCd2Jp0c" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">18</div></td>
+                        <td>
+                            <div class="attraction-name">日高普和町優駿櫻花道路</div>
+                            <div class="location">日高地區普和町</div>
+                        </td>
+                        <td>日高地區</td>
+                        <td class="info-content">
+                            <strong>景觀：</strong>全長3公里的櫻花道路，以蝦夷櫻花為主，淡粉色與藍天相映<br>
+                            <strong>交通：</strong>建議自駕前往，因鐵路斷線，公共交通不便<br>
+                            <strong>活動：</strong>附近有騎馬體驗，成人帶小孩800日幣，單人500日幣，約5-10分鐘
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=IrPO093_djo" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">19</div></td>
+                        <td>
+                            <div class="attraction-name">札幌冰雕祭</div>
+                            <div class="location">札幌大通公園</div>
+                        </td>
+                        <td>札幌市</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>一年一度的冰雕盛會，吸引各國遊客<br>
+                            <strong>景觀：</strong>大型冰雕（如恐龍冰雕），搭配聲光效果<br>
+                            <strong>體驗：</strong>可體驗雪地摩托車和穿雪鞋
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=IxLnkpWhv00" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">20</div></td>
+                        <td>
+                            <div class="attraction-name">小樽採櫻桃農場</div>
+                            <div class="location">小樽</div>
+                        </td>
+                        <td>小樽</td>
+                        <td class="info-content">
+                            <strong>果期：</strong>7月到8月中<br>
+                            <strong>費用：</strong>成人1100日幣，小學生900日幣，幼兒600日幣，無限時吃到飽<br>
+                            <strong>特色：</strong>無農藥栽種，可直接摘取食用，還可採蘋果和梨子
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=Nqjyf5GO3fA" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">21</div></td>
+                        <td>
+                            <div class="attraction-name">小樽童話故事十字路口</div>
+                            <div class="location">小樽市</div>
+                        </td>
+                        <td>小樽市</td>
+                        <td class="info-content">
+                            <strong>周邊：</strong>北一哨子三號館（以煤油燈裝飾的歷史建築）<br>
+                            <strong>特色：</strong>小樽曾因漁業興盛，玻璃工藝隨之發展
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=Nqjyf5GO3fA" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">22</div></td>
+                        <td>
+                            <div class="attraction-name">旭山動物園</div>
+                            <div class="location">旭川</div>
+                        </td>
+                        <td>旭川</td>
+                        <td class="info-content">
+                            <strong>規模：</strong>北海道最大的動物園<br>
+                            <strong>費用：</strong>成人入場費1000日幣，中學以下免費<br>
+                            <strong>特色：</strong>設計有臨場感，可近距離觀看動物，如海獅穿過玻璃水管，北極熊活潑；動物活動力強，健康狀況良好
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=ReOa8luY1hc" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">23</div></td>
+                        <td>
+                            <div class="attraction-name">札幌真駒內公園</div>
+                            <div class="location">札幌市</div>
+                        </td>
+                        <td>札幌市</td>
+                        <td class="info-content">
+                            <strong>交通：</strong>乘坐地鐵到真駒內站，轉搭真106公車（單程440日幣，約30分鐘）即可到達<br>
+                            <strong>活動：</strong>免費入場，提供免費雪地輪胎體驗
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=SE-38F7spBk" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">24</div></td>
+                        <td>
+                            <div class="attraction-name">真駒內瀧野靈園</div>
+                            <div class="location">札幌市真駒內</div>
+                        </td>
+                        <td>札幌市</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>擁有復活島摩艾石像和安藤忠雄設計的頭大佛造景<br>
+                            <strong>注意：</strong>冬季下午3點關閉，建議提早前往
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=SE-38F7spBk" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">25</div></td>
+                        <td>
+                            <div class="attraction-name">富良野肚臍祭</div>
+                            <div class="location">富良野</div>
+                        </td>
+                        <td>富良野</td>
+                        <td class="info-content">
+                            <strong>日期：</strong>每年固定於7月28、29日舉行<br>
+                            <strong>活動：</strong>晚間舉行肚臍彩繪遊行和舞蹈，遊客可參與（費用3000日幣，含彩繪）<br>
+                            <strong>氛圍：</strong>現場有美食攤位和遊戲，氣氛熱鬧，像白天的夜市
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=UItM6KGD9Sc" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">26</div></td>
+                        <td>
+                            <div class="attraction-name">洞爺湖八景之一 福建堂</div>
+                            <div class="location">洞爺湖北側</div>
+                        </td>
+                        <td>洞爺湖</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>商業開發較少，環境清幽自然<br>
+                            <strong>活動：</strong>當地人常在此運動，可在湖中捕蝦<br>
+                            <strong>景觀：</strong>可遠眺洞爺湖中島
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=VnQHdjaKF1U" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">27</div></td>
+                        <td>
+                            <div class="attraction-name">織物湖冰濤祭</div>
+                            <div class="location">織物湖</div>
+                        </td>
+                        <td>織物湖</td>
+                        <td class="info-content">
+                            <strong>景觀：</strong>由冰製成的教堂、瀑布和裝置藝術，夜晚有燈光秀<br>
+                            <strong>費用：</strong>每人300日幣，兒童免費<br>
+                            <strong>氛圍：</strong>充滿夢幻色彩
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=rUxH--wGlnU" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">28</div></td>
+                        <td>
+                            <div class="attraction-name">層雲峽</div>
+                            <div class="location">層雲峽</div>
+                        </td>
+                        <td>層雲峽</td>
+                        <td class="info-content">
+                            <strong>溫泉：</strong>有大雪山溫泉飯店，提供日歸溫泉<br>
+                            <strong>注意：</strong>風大時可能影響戶外活動
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=WbXH3dAHVX4" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">29</div></td>
+                        <td>
+                            <div class="attraction-name">石狩鮭魚祭</div>
+                            <div class="location">石狩市</div>
+                        </td>
+                        <td>石狩市</td>
+                        <td class="info-content">
+                            <strong>日期：</strong>每年秋季舉辦<br>
+                            <strong>活動：</strong>可體驗抓活鮭魚（300日幣），現場提供宰殺和冷凍運送服務<br>
+                            <strong>氛圍：</strong>現場美食攤位多，人潮眾多
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=stuixLnqDcw" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">30</div></td>
+                        <td>
+                            <div class="attraction-name">知性町山立山展望閣</div>
+                            <div class="location">知性町</div>
+                        </td>
+                        <td>知性町</td>
+                        <td class="info-content">
+                            <strong>景觀：</strong>可俯瞰知性町和鄂霍次克海，景色壯麗<br>
+                            <strong>設施：</strong>設有咖啡廳，可邊喝咖啡邊欣賞百萬海景<br>
+                            <strong>地點：</strong>位於較偏遠地區，遊客較少
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=aPNoIx-HcpM" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">31</div></td>
+                        <td>
+                            <div class="attraction-name">後田漁港朝市</div>
+                            <div class="location">後田漁港</div>
+                        </td>
+                        <td>後田</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>本地漁產市場，價格親民，可買到便宜又新鮮的海鮮<br>
+                            <strong>體驗：</strong>可觀察漁船入港卸貨的壯觀景象<br>
+                            <strong>周邊：</strong>附近有海景咖啡店Diamond Fruits
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=acRpWPwvG9o" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">32</div></td>
+                        <td>
+                            <div class="attraction-name">積丹半島神威岬</div>
+                            <div class="location">積丹半島</div>
+                        </td>
+                        <td>積丹半島</td>
+                        <td class="info-content">
+                            <strong>景觀：</strong>以「積丹藍」的清澈海水聞名，是北海道三種藍之一<br>
+                            <strong>步道：</strong>沿著步道可走到燈塔，全程約10-20分鐘，沿途海風舒適<br>
+                            <strong>特色：</strong>有「女人禁制之門」的傳說
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=ahP_YdGfmcI" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">33</div></td>
+                        <td>
+                            <div class="attraction-name">夾汁湯溫泉</div>
+                            <div class="location">積丹半島</div>
+                        </td>
+                        <td>積丹半島</td>
+                        <td class="info-content">
+                            <strong>溫泉：</strong>戶外溫泉池可欣賞日本海夕陽，泉質滑潤，帶點鹹味
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=ahP_YdGfmcI" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">34</div></td>
+                        <td>
+                            <div class="attraction-name">小樽雪燈之路</div>
+                            <div class="location">小樽市，小樽運河及手宮線會場</div>
+                        </td>
+                        <td>小樽市</td>
+                        <td class="info-content">
+                            <strong>日期：</strong>每年約在2月8日至2月15日舉行<br>
+                            <strong>景觀：</strong>小樽運河兩旁和手宮線鐵道上點滿雪燈和蠟燭，非常浪漫<br>
+                            <strong>活動：</strong>有國際志工隊參與，包括台灣和香港；手宮線會場有免費溜滑梯<br>
+                            <strong>住宿建議：</strong>由於冬季寒冷，建議住在小樽，方便逛完後回飯店泡湯
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=c4hts5-NKrg" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">35</div></td>
+                        <td>
+                            <div class="attraction-name">冰川釣魚</div>
+                            <div class="location">札幌市附近結冰的河流上</div>
+                        </td>
+                        <td>札幌市</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>在結冰的河面上挖洞釣魚<br>
+                            <strong>費用：</strong>含棚子和釣具總計3200日幣，停車費500日幣；若自備帳篷和釣竿，場地費約800日幣<br>
+                            <strong>體驗：</strong>棚內溫暖，釣到的魚可現場製成甜不辣
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=cekqa-OSkbM" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">36</div></td>
+                        <td>
+                            <div class="attraction-name">洞爺湖柴田露營區</div>
+                            <div class="location">洞爺湖旁邊</div>
+                        </td>
+                        <td>洞爺湖</td>
+                        <td class="info-content">
+                            <strong>住宿：</strong>提供車泊、小木屋和帳篷露營；小木屋價格約10,000-20,000日幣，可住6-8人；帳篷營位附電源3300日幣，不附電源2200日幣；日歸（一日遊）1000日幣<br>
+                            <strong>設施：</strong>設有洗手台、廁所，淋浴需另付費（20分鐘300日幣）；有公共廚房和野炊區<br>
+                            <strong>特色：</strong>緊鄰洞爺湖，親近大自然
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=dLzb347zHHE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">37</div></td>
+                        <td>
+                            <div class="attraction-name">釧路和商市場</div>
+                            <div class="location">釧路</div>
+                        </td>
+                        <td>釧路</td>
+                        <td class="info-content">
+                            <strong>購物：</strong>提供新鮮的帝王蟹及多種生魚片，可自選組成「勝手丼」<br>
+                            <strong>注意：</strong>國際觀光客增加導致海鮮價格上漲
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=e23j8T4VZY8" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">38</div></td>
+                        <td>
+                            <div class="attraction-name">鶴居村</div>
+                            <div class="location">釧路近郊</div>
+                        </td>
+                        <td>釧路</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>日本國鳥丹頂鶴的聚集地，早期因伊藤良孝先生長期餵食而聚集<br>
+                            <strong>活動：</strong>許多愛鳥人士和攝影師會在此觀賞和拍攝丹頂鶴
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=e23j8T4VZY8" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">39</div></td>
+                        <td>
+                            <div class="attraction-name">洞爺湖鴕鳥牧場</div>
+                            <div class="location">洞爺湖</div>
+                        </td>
+                        <td>洞爺湖</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>可近距離觀察鴕鳥
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=eObrpN7u4HI" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">40</div></td>
+                        <td>
+                            <div class="attraction-name">豐平峽溫泉</div>
+                            <div class="location">定山溪附近</div>
+                        </td>
+                        <td>定山溪</td>
+                        <td class="info-content">
+                            <strong>溫泉：</strong>戶外混浴裸湯，被評價為北海道數一數二的溫泉<br>
+                            <strong>費用：</strong>泡湯一人1000日幣
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=iWzkPw3rqMQ" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">41</div></td>
+                        <td>
+                            <div class="attraction-name">定山溪豪景大飯店</div>
+                            <div class="location">定山溪</div>
+                        </td>
+                        <td>定山溪</td>
+                        <td class="info-content">
+                            <strong>住宿：</strong>大廳寬敞，有販賣伴手禮的商店；房間有和洋室，寬敞舒適<br>
+                            <strong>溫泉：</strong>設有溫泉游泳池，有多種兒童遊樂設施；溫泉區寬敞，包含頂樓露天溫泉池<br>
+                            <strong>適合客群：</strong>非常適合親子家庭
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=lJZuLCSqAmE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">42</div></td>
+                        <td>
+                            <div class="attraction-name">知床流冰漫步</div>
+                            <div class="location">知床</div>
+                        </td>
+                        <td>知床</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>穿著特殊防寒衣在流冰上行走，可感受冰冷的海水；需由導遊帶領，具一定危險性<br>
+                            <strong>景觀：</strong>可近距離接觸來自俄羅斯的流冰<br>
+                            <strong>周邊：</strong>知床半島風景優美，有溫泉飯店可欣賞海景和流冰；從札幌開車約6-7小時
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=lMqCKz4dh4M" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">43</div></td>
+                        <td>
+                            <div class="attraction-name">層雲峽冰瀑祭</div>
+                            <div class="location">層雲峽</div>
+                        </td>
+                        <td>層雲峽</td>
+                        <td class="info-content">
+                            <strong>景觀：</strong>冰雕造型獨特，夜晚有五顏六色的燈光秀，氣氛浪漫<br>
+                            <strong>活動：</strong>提供雪地摩托車、雪地滑雪體驗租借（15分鐘500日幣）；設有酒吧，提供純米酒
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=pbzRxZNtpV4" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">44</div></td>
+                        <td>
+                            <div class="attraction-name">深川小木屋</div>
+                            <div class="location">深川</div>
+                        </td>
+                        <td>深川</td>
+                        <td class="info-content">
+                            <strong>住宿：</strong>價格非常便宜（平日8人入住，每人約2500日幣）<br>
+                            <strong>設施：</strong>包含溫泉泡到飽，房間寬敞，附廚房（鍋碗瓢盆齊全）、冰箱、微波爐、電視、冷暖氣、洗衣機、按摩椅（部分房型）<br>
+                            <strong>特色：</strong>可在門口停車，戶外可烤肉，附近有超市<br>
+                            <strong>適合客群：</strong>適合團體或家庭旅遊，可體驗當地生活
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=snVSYhPLRxs" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">45</div></td>
+                        <td>
+                            <div class="attraction-name">羊蹄山曾手露營區</div>
+                            <div class="location">羊蹄山下方</div>
+                        </td>
+                        <td>羊蹄山</td>
+                        <td class="info-content">
+                            <strong>住宿：</strong>高級露營體驗，入住蒙古包，可睡四人<br>
+                            <strong>設施：</strong>提供磨豆機、烤全雞、劈柴體驗<br>
+                            <strong>周邊：</strong>距離曾手溫泉5分鐘車程，溫泉可欣賞羊蹄山景色
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=vuHr2Rgf83g" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">46</div></td>
+                        <td>
+                            <div class="attraction-name">千歲水族館</div>
+                            <div class="location">千歲，千歲道之驛旁</div>
+                        </td>
+                        <td>千歲</td>
+                        <td class="info-content">
+                            <strong>費用：</strong>成人入場費800日幣<br>
+                            <strong>特色：</strong>大型水缸，有可觸摸魚類的互動區；模擬千歲川生態，可觀看鮭魚產卵過程（12月至1月）；設有繁體中文解說<br>
+                            <strong>教育性：</strong>被評為非常有教育意義的水族館
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=xaGq_aVZ4oE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">47</div></td>
+                        <td>
+                            <div class="attraction-name">十勝岳/湯園凌雲閣</div>
+                            <div class="location">上富良野</div>
+                        </td>
+                        <td>上富良野</td>
+                        <td class="info-content">
+                            <strong>景觀：</strong>十勝岳是活火山，山頂冒煙，風景壯麗；湯園凌雲閣提供俯瞰上富良野的全景<br>
+                            <strong>活動：</strong>有登山步道，冬季可進行滑雪<br>
+                            <strong>周邊：</strong>附近有展望台，適合野餐
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=y_uDJ_bpoSA" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">48</div></td>
+                        <td>
+                            <div class="attraction-name">富良野日之出展望台</div>
+                            <div class="location">富良野</div>
+                        </td>
+                        <td>富良野</td>
+                        <td class="info-content">
+                            <strong>景觀：</strong>可看到十勝岳連峰和富良野全景，適合野餐
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=y_uDJ_bpoSA" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">49</div></td>
+                        <td>
+                            <div class="attraction-name">白銀山莊溫泉</div>
+                            <div class="location">石聖岳上</div>
+                        </td>
+                        <td>石聖岳</td>
+                        <td class="info-content">
+                            <strong>溫泉：</strong>提供男女混浴（需穿泳衣），戶外溫泉可觀賞星空<br>
+                            <strong>費用：</strong>每人700日幣<br>
+                            <strong>特色：</strong>泉質非常舒服，戶外湯池大
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=zYe5vhtL0P8" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">50</div></td>
+                        <td>
+                            <div class="attraction-name">阿寒湖冰上釣魚</div>
+                            <div class="location">阿寒湖</div>
+                        </td>
+                        <td>阿寒湖</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>可在結冰的湖面上釣魚，洞已挖好，棚內有暖爐；釣到的魚可免費炸成天婦羅<br>
+                            <strong>費用：</strong>全包式費用1650日幣<br>
+                            <strong>體驗：</strong>適合親子，小朋友會很開心
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=J0ybvQYlOxI" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">51</div></td>
+                        <td>
+                            <div class="attraction-name">阿寒湖冰上騎單車</div>
+                            <div class="location">阿寒湖</div>
+                        </td>
+                        <td>阿寒湖</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>可騎乘胖胖胎單車在冰凍的湖面上，車胎有冰釘<br>
+                            <strong>特色：</strong>北海道獨有的體驗
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=J0ybvQYlOxI" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">52</div></td>
+                        <td>
+                            <div class="attraction-name">阿寒湖愛奴族文化村</div>
+                            <div class="location">阿寒湖</div>
+                        </td>
+                        <td>阿寒湖</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>展示愛奴族手工藝品和文化；貓頭鷹是愛奴族最高的神<br>
+                            <strong>活動：</strong>有表演廳，提供古式與現代舞蹈、聲光秀（2200日幣，非每日有）
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=J0ybvQYlOxI" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">53</div></td>
+                        <td>
+                            <div class="attraction-name">小樽青洞觀光船</div>
+                            <div class="location">小樽港</div>
+                        </td>
+                        <td>小樽市</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>乘坐快艇（時速50公里）遊覽青洞，來回80分鐘<br>
+                            <strong>費用：</strong>5000日幣<br>
+                            <strong>特色：</strong>水色清澈藍色，洞內壯觀<br>
+                            <strong>季節：</strong>建議4月到10月以外的月份前往，因天氣較穩定
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=MT5TvotS8Xw" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">54</div></td>
+                        <td>
+                            <div class="attraction-name">釧路暴風雪</div>
+                            <div class="location">釧路市川路</div>
+                        </td>
+                        <td>釧路</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>當地在三月常下暴風雪，Jerry稱自己為「雪男」
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=-A6FOytiYVU" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">55</div></td>
+                        <td>
+                            <div class="attraction-name">中頓別Camping Bus</div>
+                            <div class="location">中頓別</div>
+                        </td>
+                        <td>中頓別</td>
+                        <td class="info-content">
+                            <strong>住宿：</strong>貨櫃屋，一晚12000日幣可住四人，平均一人3000日幣<br>
+                            <strong>設施：</strong>內裝全新，有廚房、冰箱、微波爐、上下舖床、雙人床、兩間廁所、淋浴間；廚具用品多為Snowpeak品牌；戶外有草坪和烤肉架
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=1dY1O-tJ27Y" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">56</div></td>
+                        <td>
+                            <div class="attraction-name">中頓別咖啡店 Yamabuku</div>
+                            <div class="location">中頓別町</div>
+                        </td>
+                        <td>中頓別</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>鎮上唯一咖啡店，咖啡豆自烘<br>
+                            <strong>餐點：</strong>提供咖啡（冰咖啡600日幣，口感甘甜清爽）、冰淇淋（使用63度低溫殺菌牛奶製作，口感綿密含油脂，北海道前三名推薦）；還有披薩
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=1dY1O-tJ27Y" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">57</div></td>
+                        <td>
+                            <div class="attraction-name">白鳥之湖</div>
+                            <div class="location">中頓別</div>
+                        </td>
+                        <td>中頓別</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>冬季有許多白鳥（來自西伯利亞）在此過冬；設有露營區
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=1dY1O-tJ27Y" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">58</div></td>
+                        <td>
+                            <div class="attraction-name">洞爺湖道之驛 (水之驛)</div>
+                            <div class="location">洞爺湖北側</div>
+                        </td>
+                        <td>洞爺湖</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>遊客極少，可欣賞整個洞爺湖美景<br>
+                            <strong>設施：</strong>有時尚咖啡廳，提供自製麵包、蘋果派
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=VnQHdjaKF1U" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">59</div></td>
+                        <td>
+                            <div class="attraction-name">留壽都度假村</div>
+                            <div class="location">留壽都</div>
+                        </td>
+                        <td>留壽都</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>世界知名滑雪勝地，可觀看羊蹄山<br>
+                            <strong>活動：</strong>提供多種雪道，適合各級滑雪者
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=prE0KR8_7nk" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">60</div></td>
+                        <td>
+                            <div class="attraction-name">阿寒湖莊</div>
+                            <div class="location">阿寒湖</div>
+                        </td>
+                        <td>阿寒湖</td>
+                        <td class="info-content">
+                            <strong>住宿：</strong>歷史悠久的飯店，提供和室房型、溫泉饅頭和茶具；部分房型可欣賞阿寒湖景<br>
+                            <strong>溫泉：</strong>百分之百自家引進的天然溫泉<br>
+                            <strong>設施：</strong>大廳提供免費冰淇淋吃到飽和咖啡機<br>
+                            <strong>用餐：</strong>二樓房間改裝為小包廂供用餐，提供帝王蟹、握壽司、小火鍋、天婦羅、生魚片
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=-A6FOytiYVU" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">61</div></td>
+                        <td>
+                            <div class="attraction-name">阿寒湖自行車</div>
+                            <div class="location">阿寒湖</div>
+                        </td>
+                        <td>阿寒湖</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>可在結冰的阿寒湖上體驗單車
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=-A6FOytiYVU" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">62</div></td>
+                        <td>
+                            <div class="attraction-name">札幌啤酒節</div>
+                            <div class="location">札幌大通公園，從五丁目延伸到十一丁目</div>
+                        </td>
+                        <td>札幌市</td>
+                        <td class="info-content">
+                            <strong>日期：</strong>從昭和34年（1959年）開始舉辦，疫情後首次重辦<br>
+                            <strong>特色：</strong>整個啤酒花園綿延1公里，提供Suntory、Asahi、Kirin、Sapporo等日本知名啤酒，以及世界各地啤酒<br>
+                            <strong>美食：</strong>現場有台灣大雞排等食物攤位<br>
+                            <strong>氛圍：</strong>日本人下班後小酌放鬆的場所，男女老少皆宜
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=-sK79_9Hac" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">63</div></td>
+                        <td>
+                            <div class="attraction-name">旭川國際滑雪場</div>
+                            <div class="location">旭川市</div>
+                        </td>
+                        <td>旭川</td>
+                        <td class="info-content">
+                            <strong>住宿：</strong>附近有提供天然溫泉和美味早餐的飯店，CP值高
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=NbRz11C5Q9A" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">64</div></td>
+                        <td>
+                            <div class="attraction-name">阿寒湖</div>
+                            <div class="location">道東地區</div>
+                        </td>
+                        <td>阿寒湖</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>冬季結冰厚度可達60公分，汽車可在湖上行駛
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=-A6FOytiYVU" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">65</div></td>
+                        <td>
+                            <div class="attraction-name">小樽青洞</div>
+                            <div class="location">小樽市</div>
+                        </td>
+                        <td>小樽市</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>只能乘坐快艇到達；水很藍很清澈
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=MT5TvotS8Xw" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">66</div></td>
+                        <td>
+                            <div class="attraction-name">北海道大學</div>
+                            <div class="location">札幌市</div>
+                        </td>
+                        <td>札幌市</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>校園廣闊，有銀杏大道
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=Bv0QpG1tQJ4" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">67</div></td>
+                        <td>
+                            <div class="attraction-name">知床自然中心</div>
+                            <div class="location">知床</div>
+                        </td>
+                        <td>知床</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>提供知床的簡單介紹，有North Face店鋪和時尚咖啡店<br>
+                            <strong>展覽：</strong>播放關於知床動物的影片，介紹環境保育<br>
+                            <strong>活動：</strong>可租借雪地鞋（500日幣）
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=n5Syz7jp2Wk" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">68</div></td>
+                        <td>
+                            <div class="attraction-name">少女的眼淚瀑布</div>
+                            <div class="location">知床</div>
+                        </td>
+                        <td>知床</td>
+                        <td class="info-content">
+                            <strong>路線：</strong>步道簡單，冬季基本沒有棕熊<br>
+                            <strong>景觀：</strong>結冰瀑布呈藍色，非常乾淨美麗
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=n5Syz7jp2Wk" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">69</div></td>
+                        <td>
+                            <div class="attraction-name">知床五湖</div>
+                            <div class="location">知床</div>
+                        </td>
+                        <td>知床</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>值得深入導覽，能了解詳細資訊<br>
+                            <strong>費用：</strong>導覽約5000日幣<br>
+                            <strong>注意：</strong>每年5月到7月為棕熊活動期，不能自行進入，需參加導覽
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=n5Syz7jp2Wk" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">70</div></td>
+                        <td>
+                            <div class="attraction-name">硫磺山</div>
+                            <div class="location">弟子屈町</div>
+                        </td>
+                        <td>弟子屈町</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>地底地熱噴出濃濃硫磺味，類似北投地獄谷<br>
+                            <strong>景觀：</strong>有硫磺結晶，溫度高，無積雪<br>
+                            <strong>食物：</strong>推薦溫泉蛋（100日幣/顆），可加鹽
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=dLzb347zHHE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">71</div></td>
+                        <td>
+                            <div class="attraction-name">屈斜路湖古丹溫泉</div>
+                            <div class="location">弟子屈町</div>
+                        </td>
+                        <td>弟子屈町</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>混浴裸湯，可與天鵝一起泡溫泉<br>
+                            <strong>環境：</strong>非常原始簡陋，只有木屋可換衣服<br>
+                            <strong>景觀：</strong>可欣賞西伯利亞飛來避冬的天鵝，遠方山景，結冰的湖
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=dLzb347zHHE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">72</div></td>
+                        <td>
+                            <div class="attraction-name">屈斜路湖砂湯</div>
+                            <div class="location">弟子屈町</div>
+                        </td>
+                        <td>弟子屈町</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>溫泉藏在沙中，挖沙即可湧出溫泉<br>
+                            <strong>設施：</strong>有竹湯管線可導溫泉水入槽，販售毛巾（100日幣）<br>
+                            <strong>景觀：</strong>可邊泡湯邊享受雪景和天鵝
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=dLzb347zHHE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">73</div></td>
+                        <td>
+                            <div class="attraction-name">摩周湖</div>
+                            <div class="location">弟子屈町</div>
+                        </td>
+                        <td>弟子屈町</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>日本透明度最高的湖泊
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=J0ybvQYlOxI" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">74</div></td>
+                        <td>
+                            <div class="attraction-name">美瑛青池</div>
+                            <div class="location">美瑛町</div>
+                        </td>
+                        <td>美瑛町</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>湖水呈現藍色，風景優美
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=Bv0QpG1tQJ4" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">75</div></td>
+                        <td>
+                            <div class="attraction-name">東川町遊客中心</div>
+                            <div class="location">東川町</div>
+                        </td>
+                        <td>東川町</td>
+                        <td class="info-content">
+                            <strong>設施：</strong>可租借雪鞋（500日幣/天）、越野滑雪板（500日幣/天）<br>
+                            <strong>特色：</strong>提供GPS發射器租借（1-2日1000日幣），用於登山安全搜救<br>
+                            <strong>互動：</strong>有VR實境體驗，可360度觀賞旭岳景色<br>
+                            <strong>展覽：</strong>介紹高山植物和動物，有視聽間和多國語言簡介
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=xaGq_aVZ4oE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">76</div></td>
+                        <td>
+                            <div class="attraction-name">大雪旭岳泉水公園</div>
+                            <div class="location">東川町</div>
+                        </td>
+                        <td>東川町</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>東川町唯一沒有自來水道的城鎮，水源來自旭岳的結冰水，可直接飲用<br>
+                            <strong>設施：</strong>有泉源處可直接裝水，許多餐廳和豆腐工廠會來取水
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=xaGq_aVZ4oE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">77</div></td>
+                        <td>
+                            <div class="attraction-name">旭岳日本最晚開花櫻花</div>
+                            <div class="location">旭岳車站正前方小徑</div>
+                        </td>
+                        <td>旭岳</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>可同時欣賞櫻花、旭岳和殘雪，景象特殊<br>
+                            <strong>季節：</strong>六月底開花
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=xaGq_aVZ4oE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">78</div></td>
+                        <td>
+                            <div class="attraction-name">小樽運河</div>
+                            <div class="location">小樽市</div>
+                        </td>
+                        <td>小樽市</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>著名觀光景點
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=MT5TvotS8Xw" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">79</div></td>
+                        <td>
+                            <div class="attraction-name">小樽音樂盒堂本店</div>
+                            <div class="location">小樽童話故事十字路口前方</div>
+                        </td>
+                        <td>小樽市</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>全世界唯二的蒸汽時鐘
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=Nqjyf5GO3fA" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">80</div></td>
+                        <td>
+                            <div class="attraction-name">小樽北一哨子三號館</div>
+                            <div class="location">小樽童話故事十字路口</div>
+                        </td>
+                        <td>小樽市</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>被評為歷史建造物，保留早期建築風味，點滿百盞煤油燈
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=Nqjyf5GO3fA" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">81</div></td>
+                        <td>
+                            <div class="attraction-name">漁市環湖路線</div>
+                            <div class="location">漁市</div>
+                        </td>
+                        <td>余市</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>可騎單車環湖，路線平坦，適合各年齡層<br>
+                            <strong>距離：</strong>環湖一周約35公里<br>
+                            <strong>景觀：</strong>沿途貼近湖邊，風景優美
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=VnQHdjaKF1U" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">82</div></td>
+                        <td>
+                            <div class="attraction-name">函館金森紅磚倉庫</div>
+                            <div class="location">函館</div>
+                        </td>
+                        <td>函館</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>著名觀光景點
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=prE0KR8_7nk" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">83</div></td>
+                        <td>
+                            <div class="attraction-name">函館百萬夜景</div>
+                            <div class="location">函館</div>
+                        </td>
+                        <td>函館</td>
+                        <td class="info-content">
+                            <strong>特色：</strong>著名觀光景點
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=prE0KR8_7nk" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">84</div></td>
+                        <td>
+                            <div class="attraction-name">深川溫泉</div>
+                            <div class="location">深川</div>
+                        </td>
+                        <td>深川</td>
+                        <td class="info-content">
+                            <strong>住宿：</strong>提供溫泉泡湯，泡到飽
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=snVSYhPLRxs" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">85</div></td>
+                        <td>
+                            <div class="attraction-name">定山溪溫泉游泳池</div>
+                            <div class="location">定山溪豪景大飯店內</div>
+                        </td>
+                        <td>定山溪</td>
+                        <td class="info-content">
+                            <strong>設施：</strong>大型溫泉游泳池，有多種兒童遊樂設施
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=lJZuLCSqAmE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">86</div></td>
+                        <td>
+                            <div class="attraction-name">東川町忠別水庫</div>
+                            <div class="location">東川町</div>
+                        </td>
+                        <td>東川町</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>夏季可玩水上活動，如獨木舟、SUP
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=xaGq_aVZ4oE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">87</div></td>
+                        <td>
+                            <div class="attraction-name">旭岳開山活動</div>
+                            <div class="location">旭岳</div>
+                        </td>
+                        <td>旭岳</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>每年會舉辦開山儀式，允許登山；有愛奴族傳統儀式和表演<br>
+                            <strong>纜車：</strong>來回票成人3200日幣，小學生以下1600日幣<br>
+                            <strong>登山：</strong>從車站到支線站標高1600米需10分鐘纜車；到北海道最高點2291米需4小時來回
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=xaGq_aVZ4oE" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                    <tr>
+                        <td><div class="index-number">88</div></td>
+                        <td>
+                            <div class="attraction-name">石狩鮭魚捕撈體驗區</div>
+                            <div class="location">石狩市</div>
+                        </td>
+                        <td>石狩市</td>
+                        <td class="info-content">
+                            <strong>活動：</strong>可在指定區域內抓活鮭魚<br>
+                            <strong>費用：</strong>300日幣
+                        </td>
+                        <td><a href="https://www.youtube.com/watch?v=stuixLnqDcw" class="video-link" target="_blank">觀看影片</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>© 2023 北海道旅遊景點指南。所有權利保留。</p>
+        </div>
+    </div>
+</body>
+</html>
